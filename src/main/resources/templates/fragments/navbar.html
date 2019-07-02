@@ -1,0 +1,65 @@
+<th:block th:fragment="navbar">
+    <div class="row mb">
+        <div class="col p-0">
+                <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                        <a class="navbar-brand" href="/">Equipos Spring</a>
+                        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="collapsibleNavId">
+                            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
+                                </li>
+                                <li class="nav-item"> 
+                                    <a class="nav-link" href="/equipos" >Equipos</a>
+                                </li>
+                                
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                        <a class="dropdown-item" href="#">Action 1</a>
+                                        <a class="dropdown-item" href="#">Action 2</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item"> 
+                                        <a class="nav-link" href="/aboutus" >Acerca de Nosotros</a>
+                                    </li>
+    
+                            </ul>
+                            
+                            <ul class="navbar-nav mt-2 mr-2 mt-lg-0">
+                                   
+                                    <th:block th:if="${session.usuarioLogueado==null}">
+                                            <li class="nav-item"> 
+                                                    <a class="nav-link" href="/login" >Ingresar</a>
+                                            </li>
+                                    </th:block>
+                                    
+                                    <th:block th:unless="$session.usuarioLogueado==null}">
+                                            <li class="nav-item dropdown float-right"> 
+                                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="'Logueado como: '+${session.usuarioLogueado.getUsuario()}">Dropdown</a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdown2">
+                                                        
+                                                        <form action="logout" method="post">
+                                                                <input class="dropdown-item" type="submit" value="Terminar Sesión">
+                                                        </form>
+                                                    </div>          
+                                            </li>
+                                    </th:block>    
+                                    
+                                    
+                                </ul>
+    
+                            <form class="form-inline my-2 my-lg-0">
+                                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                            </form>
+                            
+                        </div>
+                    </nav>
+        </div>
+            
+    </div>
+</th:block>

@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Equipos Spring</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+      
+
+    <div class="container-fluid">
+        
+        <th:block th:replace="fragments/navbar :: navbar"></th:block>
+
+        <div class="container">
+
+                <div class="row align mt-4 mb-4">
+                    <div class="col-10">
+                        <h1>Página de equipos</h1>
+                    </div>
+                    <div class="col">
+                       <a href="/equipos/crear" class="btn btn-primary m-2">Crear Equipo</a>
+                    </div>                              
+                </div>
+            
+                <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                               <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="e : ${listaEquipos}">
+                                <td scope="row" th:text="${e.getId()}"></td>
+                                <td th:text="${e.getNombre()}"></td>
+                                <td>
+                                    <a  th:href="'/equipos/'+${e.getId()}+'/ver'" class="btn btn-sm btn-warning">Ver</a>
+                                </td>
+                              
+                            </tr>
+                        </tbody>
+                    </table>
+        </div>
+       
+        
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+th:each=" d : ${listaDirectores}
+th:text="${d.getNombres()}"
+
+-->
